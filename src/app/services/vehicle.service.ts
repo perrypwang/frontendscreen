@@ -1,0 +1,44 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { IVehicle } from '../interfaces/ivehicle';
+import { Headers, Http, RequestOptions } from '@angular/http';
+
+const SERVICE_URL = 'https://drivetime-dev.search.windows.net/indexes/vehiclesindex/docs?api-version=2016-09-01&search=*$top=100';
+const SERVICE_KEY = '6DD9A9C266C35785AAB16C762F6FFF93';
+
+@Injectable()
+export class VehicleService {
+
+  constructor(private http: Http) {
+    console.log(this.getVehicles());
+  }
+
+  getVehicles() {
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('api-key', SERVICE_KEY);
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    return this.http.get(SERVICE_URL, options).map(this.extractData).catch(this.handleError);
+  }
+
+  private handleError (error: Response | any) {
+    // In a real world app, you might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+
+  private extractData(res: any) {
+    let body = res.json();
+    return body.value || { };
+  }
+
+}
