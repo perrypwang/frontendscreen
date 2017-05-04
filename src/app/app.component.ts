@@ -19,6 +19,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicles = this.vehicleService.getVehicles();
-    console.log(this.vehicles);
   }
 }

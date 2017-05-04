@@ -38,8 +38,7 @@ export class VehicleService {
 
   private extractValue(res: any) {
     let body = res.json();
-    console.log(body);
-    return body.value || { };
+    return body.value || [];
   }
 
 }
