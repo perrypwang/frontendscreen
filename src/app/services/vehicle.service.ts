@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IVehicle } from '../interfaces/ivehicle';
 import { Headers, Http, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
-const SERVICE_URL = 'https://drivetime-dev.search.windows.net/indexes/vehiclesindex/docs?api-version=2016-09-01&search=*$top=100';
+const SERVICE_URL = 'https://drivetime-dev.search.windows.net/indexes/vehiclesindex/docs?api-version=2016-09-01&search=*&$top=100';
 const SERVICE_KEY = '6DD9A9C266C35785AAB16C762F6FFF93';
 
 @Injectable()
 export class VehicleService {
 
-  constructor(private http: Http) {
-    console.log(this.getVehicles());
-  }
+  constructor(private http: Http) { }
 
-  getVehicles() {
+  getVehicles(): Observable<IVehicle[]> {
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('api-key', SERVICE_KEY);
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(SERVICE_URL, options).map(this.extractData).catch(this.handleError);
+    return this.http.get(SERVICE_URL, options).map(this.extractValue).catch(this.handleError);
   }
 
   private handleError (error: Response | any) {
@@ -36,8 +36,9 @@ export class VehicleService {
     return Observable.throw(errMsg);
   }
 
-  private extractData(res: any) {
+  private extractValue(res: any) {
     let body = res.json();
+    console.log(body);
     return body.value || { };
   }
 

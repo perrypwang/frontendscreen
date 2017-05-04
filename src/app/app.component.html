@@ -9,9 +9,10 @@
     </md-menu>
     <span>{{title}}</span>
   </md-toolbar>
-
+</div>
+<div>
 <md-list>
-  <md-list-item *ngFor let vehicle of vehicles>{{vehicle.model}}</md-list-item>
+  <md-list-item *ngFor="let vehicle of vehicles | async">{{vehicle.Model}}</md-list-item>
 </md-list>
 </div>
 
