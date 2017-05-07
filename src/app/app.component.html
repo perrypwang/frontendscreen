@@ -4,15 +4,12 @@
       <md-icon>menu</md-icon>
     </button>
     <md-menu x-position="before" #menu="mdMenu">
-      <button md-menu-item>Option 1</button>
-      <button md-menu-item>Option 2</button>
+      <a md-button routerLink="">Home</a><br />
+      <a md-button routerLink="vehicle-search">Vehicle Search</a><br />
+      <a md-button routerLink="vehicle-detail">Vehicle Detail</a>
     </md-menu>
     <span>{{title}}</span>
   </md-toolbar>
 </div>
-<div>
-<md-list>
-  <md-list-item *ngFor="let vehicle of vehicles | async">{{vehicle.Model}}</md-list-item>
-</md-list>
-</div>
+<router-outlet></router-outlet>
 
