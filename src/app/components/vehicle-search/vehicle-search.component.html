@@ -1,8 +1,8 @@
 <div>
   <p>
-  vehicle-search works!
+  {{title}}
   </p>
-  <ul>
-    <li *ngFor="let vehicle of vehicles | async">{{vehicle.Model}}</li>
-  </ul>
+  <p>
+    <a [routerLink]="['/vehicle-detail', 1030167414]">2010 Ford Escape</a>
+  </p>
 </div>

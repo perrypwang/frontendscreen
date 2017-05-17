@@ -5,7 +5,7 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-const SERVICE_URL = 'https://drivetime-dev.search.windows.net/indexes/vehiclesindex/docs?api-version=2016-09-01&search=*&$top=100';
+const SERVICE_URL_SEARCH = 'https://drivetime-dev.search.windows.net/indexes/vehiclesindex/docs?api-version=2016-09-01&search=*&$top=100';
 const SERVICE_KEY = '6DD9A9C266C35785AAB16C762F6FFF93';
 
 @Injectable()
@@ -19,7 +19,17 @@ export class VehicleService {
     headers.append('api-key', SERVICE_KEY);
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(SERVICE_URL, options).map(this.extractValue).catch(this.handleError);
+    return this.http.get(SERVICE_URL_SEARCH, options).map(this.extractValue).catch(this.handleError);
+  }
+
+  getVehicle(id: number): Observable<IVehicle> {
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('api-key', SERVICE_KEY);
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    const url = SERVICE_URL_SEARCH + '&$filter=StockNumber eq ' + id;
+    return this.http.get(url, options).map(this.extractValue).catch(this.handleError);
   }
 
   private handleError (error: Response | any) {

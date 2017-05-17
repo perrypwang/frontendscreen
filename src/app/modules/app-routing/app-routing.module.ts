@@ -7,7 +7,7 @@ import { VehicleDetailComponent } from '../../components/vehicle-detail/vehicle-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'vehicle-search', component: VehicleSearchComponent },
-  { path: 'vehicle-detail', component: VehicleDetailComponent }
+  { path: 'vehicle-detail/:id', component: VehicleDetailComponent }
 ];
 
 @NgModule({
