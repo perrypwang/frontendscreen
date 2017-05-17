@@ -3,13 +3,13 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0, developed in [Angular 4.0+](https://angular.io/) and uses 
 [Angular Material](https://material.angular.io/) for reusable components and theming.  Depending on your experience with Angular, this project should take no more than an hour of your time.  **Your Task**: complete the following User Story:
  
-###As a User, When I browse to the /vehicle-search URL, I see a list of vehicle cards.
+### As a User, When I browse to the /vehicle-search URL, I see a list of vehicle cards.
 
-####Notes:
+#### Notes:
  - The vehicle-search component has already been scaffolded.  All your work should be completed in
  this component
 
-####Tasks:
+#### Tasks:
  - Import the VehicleService and use the method getVehicles() to retrieve an array of vehicles
  - Create a Material Card to display each element in the array of vehicles:
  [![Vehicle Search Card](https://commondrivetimedev.blob.core.windows.net/screen/vehicle-card.png)](https://commondrivetimedev.blob.core.windows.net/screen/vehicle-card.png)
