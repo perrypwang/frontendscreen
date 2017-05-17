@@ -17,7 +17,6 @@ export class VehicleService {
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('api-key', SERVICE_KEY);
-    headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     return this.http.get(SERVICE_URL_SEARCH, options).map(this.extractValue).catch(this.handleError);
   }
@@ -26,7 +25,6 @@ export class VehicleService {
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('api-key', SERVICE_KEY);
-    headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     const url = SERVICE_URL_SEARCH + '&$filter=StockNumber eq ' + id;
     return this.http.get(url, options).map(this.extractValue).catch(this.handleError);
