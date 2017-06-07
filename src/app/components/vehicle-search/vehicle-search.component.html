@@ -2,19 +2,15 @@
   <p>
   {{title}}
   </p>
-  <p>
-    <a [routerLink]="['/vehicle-detail', 1030167414]">2010 Ford Escape</a>
-  </p>
-  <md-card *ngFor = "let vehicle of vehicles">
-    <md-card-title-group>
-      <md-card-title> {{vehicle.year}} {{vehicle.make}} {{vehicle.DisplayName}} </md-card-title>
-      <md-card-subtitle> {{vehicle.BodyStyle}} </md-card-subtitle>  
-      <!-- 'https://az30404.vo.msecnd.net/publicstockimages/' + StockNumber + '/' + StockNumber + '_FULL_LF-E.jpg' -->
-      <img md-card-sm-image src = "" >
-    </md-card-title-group>
 
-    <md-card-action>
-      <button (click) = "getDetails()">View Details</button>
-    </md-card-action>
+  <md-card *ngFor = "let vehicle of vehicles"  >
+    <md-card-title-group>
+      <md-card-title> {{vehicle.Year}} {{vehicle.Make}} {{vehicle.DisplayName}} </md-card-title>
+      <md-card-subtitle> {{vehicle.BodyStyle}} </md-card-subtitle>  
+      <img [src] = "getImageUrl(vehicle)">
+    </md-card-title-group>
+    <md-card-actions>
+      <span class= "details" (click) = "getDetails(vehicle)">View Details</span>
+    </md-card-actions>
   </md-card>
 </div>
