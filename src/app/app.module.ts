@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { VehicleSearchComponent } from './components/vehicle-search/vehicle-search.component';
 import { VehicleDetailComponent } from './components/vehicle-detail/vehicle-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { VehicleService } from './services/vehicle.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpModule,
     MaterialModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ VehicleService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
