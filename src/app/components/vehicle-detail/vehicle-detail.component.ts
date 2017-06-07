@@ -24,10 +24,7 @@ export class VehicleDetailComponent implements OnInit {
     this.stockNumber = this.route.snapshot.params['id'];
     if (this.stockNumber > 0) {
       this.vehicleService.getVehicle(this.stockNumber)
-        .subscribe(vehicle => {
-          this.vehicle = vehicle[0];
-          console.log(this.vehicle);
-        } );
+        .subscribe(vehicle => this.vehicle = vehicle[0]);
       this.mainImageUrl = 'https://az30404.vo.msecnd.net/publicstockimages/' + this.stockNumber + '/' +
         this.stockNumber + '_FULL_LF-E.jpg';
       this.thumbImageUrl = 'https://az30404.vo.msecnd.net/publicstockimages/' + this.stockNumber + '/' +
