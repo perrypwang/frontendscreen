@@ -3,6 +3,14 @@ img{
     height: 15%;
 }
 
+.mat-card-title{
+    text-align:left;
+}
+
+.mat-card-subtitle{
+    text-align:left;
+}
+
 button{
     background-color: none;
     border: none;
